@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
+using Lab4_Ex4.Validator;
 
 namespace Lab4_Ex4.GUI
 {
@@ -57,9 +58,8 @@ namespace Lab4_Ex4.GUI
                 if (errorMessage.Count != 0) {
                     throw new ArgumentException();
                 }
-                int noApartment = Convert.ToInt32(noApartmentTextbox.Text);
-                int surface = Convert.ToInt32(surfaceTextbox.Text);
-                this.service.addApartment(noApartment, "fara", 0, surface);
+
+                this.service.addApartment(noApartmentTextbox.Text, "fara", "0", surfaceTextbox.Text);
 
                 errorMessageLabel.Text = "Apartamentul a fost adaugat.";
                 errorMessageLabel.ForeColor = Color.DarkGreen;
@@ -74,26 +74,13 @@ namespace Lab4_Ex4.GUI
 
 
         private List<String> validateAllInput() {
-            /// <summary>
-            /// Input model binding and validation to apartment
-            /// </summary>
-            /// <returns>Error results</returns>
-            
-            List<String> errorMessage = new List<String>();
-            
-            //Verificare numar apartament
-            if (!Regex.IsMatch(noApartmentTextbox.Text, @"^\d+$") || noApartmentTextbox.TextLength == 0) {
-                errorMessage.Add("Numarul apartamentului este invalid. ");
-            } else if (this.service.getNoApartments().Contains(Convert.ToInt32(noApartmentTextbox.Text)))
-                errorMessage.Add("Un apartament cu acel numar exista deja. ");
+            List<String> result = new List<String>();
 
-            //Verificare suprafata
-            if (!Regex.IsMatch(surfaceTextbox.Text, @"^\d+$") || surfaceTextbox.TextLength == 0) {
-                errorMessage.Add("Suprafata este invalida. ");
-            } else if (Convert.ToInt32(surfaceTextbox.Text) <= 0) {
-                errorMessage.Add("Suprafata trebuie sa fie mai mare decat zero. ");
-            }
-            return errorMessage;
+            String noApartment = noApartmentTextbox.Text;
+            String surface = surfaceTextbox.Text;
+            result.AddRange(this.service.validateApartment(noApartment, "fara", "0", surface));
+
+            return result;
         }
     }
 }

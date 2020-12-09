@@ -27,6 +27,7 @@ namespace Lab4_Ex4
             this.dbFilepath = dbFilepath;
         }
 
+
         public void loadFromFile() {
             /// <summary>
             /// Loads all data from the database

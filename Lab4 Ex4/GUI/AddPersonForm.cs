@@ -47,7 +47,7 @@ namespace Lab4_Ex4.GUI
                 }
                 String surname = personSurnameTextbox.Text;
                 String forename = personForenameTextbox.Text;
-                int noApartment = Convert.ToInt32(noApartmentTextbox.Text);
+                String noApartment = noApartmentTextbox.Text;
                 String birthdate = birthdateDatePicker.Value.ToString("dd/MM/yyyy");
                 String job = jobTextbox.Text;
                 this.service.addPerson(forename, surname, noApartment, birthdate, job);
@@ -89,7 +89,7 @@ namespace Lab4_Ex4.GUI
             }
             
             // Verificare eligibilitate de a detine un apartament
-            else if (this.service.getApartment(Convert.ToInt32(noApartmentTextbox.Text)).owner.Equals("fara") && (DateTime.Now - birthdateDatePicker.Value).TotalDays < 6570) {
+            if (this.service.getApartment(Convert.ToInt32(noApartmentTextbox.Text)).owner.Equals("fara") && (DateTime.Now - birthdateDatePicker.Value).TotalDays < 6570) {
                 errorMessage.Add("Persoana este un minor si nu poate detine un apartament. ");
             }
             if (!Regex.IsMatch(jobTextbox.Text, @"^[a-zA-Z]+$")) {

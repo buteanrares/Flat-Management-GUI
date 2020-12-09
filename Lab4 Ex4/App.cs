@@ -20,7 +20,7 @@ namespace Lab4_Ex4
             Repository repository = new Repository("C:\\Users\\butea\\source\\repos\\Lab4 Ex4\\Lab4 Ex4\\Database");
             repository.loadFromFile();
          
-            Service service = new Service(repository, modelValidator);
+            Service service = new Service(repository,modelValidator);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

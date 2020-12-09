@@ -31,6 +31,26 @@ namespace Lab4_Ex4
             this.modelValidator = modelValidator;
         }
 
+
+        public List<String> validatePerson(String forename, String surname, String noApartment, String birthdate, String job, String operation="add") {
+            List<String> result = new List<String>();
+
+            result.AddRange(this.modelValidator.bindPerson(forename, surname, noApartment, birthdate, job));
+            result.AddRange(this.modelValidator.validatePerson(this,forename, surname, noApartment, birthdate, job, operation));
+
+            return result;
+        }
+
+        public List<String> validateApartment(String noApartment, String owner, String noResidents, String surface, String operation="add") {
+            List<String> result = new List<string>();
+
+            result.AddRange(this.modelValidator.bindApartment(noApartment, owner, noResidents, surface));
+            result.AddRange(this.modelValidator.validateApartment(this, noApartment, owner, surface, operation));
+
+            return result;
+        }
+
+
         public void delete(Person person) {
             /// <summary>
             /// Deletes a person
@@ -105,8 +125,8 @@ namespace Lab4_Ex4
             return this.repository.read(noApartment);
         }
 
-
-        public void addPerson(String forename, String surname, int noApartment, String birthdate, String job) {
+        //TODO: Check references
+        public void addPerson(String forename, String surname, String noApartment, String birthdate, String job) {
             /// <summary>
             /// Adds a person
             /// </summary>
@@ -116,17 +136,21 @@ namespace Lab4_Ex4
             /// <param name="birthdate">Person's birthdate</param>
             /// <param name="job">Person's job</param>
 
-            Person person = new Person(forename, surname, noApartment, birthdate, job);
-            Apartment apartment = this.repository.read(noApartment);
+            int INTnoApartment = Convert.ToInt32(noApartment);
+
+            Person person = new Person(forename, surname, INTnoApartment, birthdate, job);
+            Apartment apartment = this.repository.read(INTnoApartment);
+
             if (apartment.owner.Equals("fara"))
                 apartment.owner = person.forename + " " + person.surname;
             apartment.noResidents++;
-            this.repository.update(this.repository.read(noApartment), apartment);
+            this.repository.update(this.repository.read(INTnoApartment), apartment);
             this.repository.create(person);
         }
 
 
-        public void addApartment(int noApartment, String owner, int noResidents, int surface) {
+        //TODO: Check references
+        public void addApartment(String noApartment, String owner, String noResidents, String surface) {
             /// <summary>
             /// Adds an apartment
             /// </summary>
@@ -134,8 +158,12 @@ namespace Lab4_Ex4
             /// <param name="owner">Apartment's owner</param>
             /// <param name="noResidents">Apartment's number of residents</param>
             /// <param name="surface">Apartment's surface</param>
-            
-            Apartment apartment = new Apartment(noApartment, owner, noResidents, surface);
+
+            int INTnoApartment = Convert.ToInt32(noApartment);
+            int INTnoResidents = Convert.ToInt32(noResidents);
+            int INTsurface = Convert.ToInt32(surface);
+
+            Apartment apartment = new Apartment(INTnoApartment, owner, INTnoResidents, INTsurface);
             this.repository.create(apartment);
         }
 
