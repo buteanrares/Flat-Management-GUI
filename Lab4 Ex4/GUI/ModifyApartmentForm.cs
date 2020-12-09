@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Lab4_Ex4.Validator;
 
 namespace Lab4_Ex4.GUI
 {
@@ -61,7 +62,11 @@ namespace Lab4_Ex4.GUI
             /// Handler for apartment modify
             /// </summary>
 
-            List<String> errorMessage = new List<String>(validateAllInput());
+            ModelValidator modelValidator = new ModelValidator(this.service);
+            List<String> errorMessage = new List<String>();
+
+            errorMessage.AddRange(modelValidator.validateApartment(apartmentsGridView,modifyApartmentGrid));
+
             try { 
                 if (errorMessage.Count != 0) {
                     throw new ArgumentException();
@@ -93,53 +98,6 @@ namespace Lab4_Ex4.GUI
                     errorMessageLabel.Text += error;
                 }
             }
-        }
-
-
-        private List<String> validateAllInput() {
-            /// <summary>
-            /// Model binding and validation to apartment
-            /// </summary>
-            /// <returns>Error list</returns>
-            
-            List<String> errorMessage = new List<String>();
-            if (apartmentsGridView.SelectedRows.Count == 0)
-                errorMessage.Add("Selectati mai intai apartamentul. ");
-            else {
-                String noApartment = modifyApartmentGrid.Rows[0].Cells[0].Value.ToString();
-                String owner = modifyApartmentGrid.Rows[0].Cells[1].Value.ToString();
-                String noResidents = modifyApartmentGrid.Rows[0].Cells[2].Value.ToString();
-                String surface = modifyApartmentGrid.Rows[0].Cells[3].Value.ToString();
-
-                //Verificare numar apartament
-                if (!Regex.IsMatch(noApartment, @"^\d+$") || noApartment.Length == 0) {
-                    errorMessage.Add("Numarul apartamentului este invalid. ");
-                } else if (this.service.getNoApartments().Contains(Convert.ToInt32(noApartment)) && !noApartment.Equals(apartmentsGridView.SelectedRows[0].Cells[0].Value.ToString()))
-                    errorMessage.Add("Un apartament cu acel numar exista deja. ");
-
-                //Verificare persoana
-                List<String> personNames = new List<String>();
-                foreach (Person person in this.service.getPeople()) {
-                    personNames.Add(person.getFullName("FS"));
-                }
-                if (!personNames.Contains(owner))
-                    errorMessage.Add("Persoana nu exista.");
-
-                //Verificare numar locatar
-                if (!Regex.IsMatch(noResidents, @"^\d+$") || noResidents.Length == 0) {
-                    errorMessage.Add("Numarul locatarilor este invalid. ");
-                } else if (noResidents != apartmentsGridView.SelectedRows[0].Cells[2].Value.ToString()) {
-                    errorMessage.Add("Nu puteti modifica numarul de locatari. ");
-                }
-
-                //Verificare suprafata
-                if (!Regex.IsMatch(surface, @"^\d+$") || surface.Length == 0) {
-                    errorMessage.Add("Suprafata este invalida. ");
-                } else if (Convert.ToInt32(surface) <= 0) {
-                    errorMessage.Add("Suprafata trebuie sa fie mai mare decat zero. ");
-                }
-            }
-            return errorMessage;
         }
 
 

@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lab4_Ex4.Validator;
 
 namespace Lab4_Ex4.GUI
 {
@@ -40,7 +41,11 @@ namespace Lab4_Ex4.GUI
             /// Handler for add person operation
             /// </summary>
             
-            List<String> errorMessage = new List<String>(validateAllInput());
+            ModelValidator modelValidator = new ModelValidator(this.service);
+            List<String> errorMessage = new List<String>();
+
+            errorMessage.AddRange(modelValidator.validatePerson(personForenameTextbox, personSurnameTextbox, noApartmentTextbox, birthdateDatePicker, jobTextbox));
+
             try {
                 if (errorMessage.Count!=0) {
                     throw new ArgumentException();
@@ -63,53 +68,12 @@ namespace Lab4_Ex4.GUI
             };
         }
 
-        private List<String> validateAllInput() {
-            /// <summary>
-            /// Model binding and validation to person
-            /// </summary>
-            /// <returns>Error list</returns>
-
-            List<String> errorMessage = new List<String>();
-
-            // Verificare prenume
-            if (!Regex.IsMatch(personForenameTextbox.Text, @"^[a-zA-Z]+$")) {
-                errorMessage.Add("Prenumele persoanei este invalid. ");
-            }
-
-            // Verificare nume
-            if (!Regex.IsMatch(personSurnameTextbox.Text, @"^[a-zA-Z]+$")) {
-                errorMessage.Add("Numele persoanei este invalid. ");
-            }
-
-            // Verificare nr apartament
-            if (!Regex.IsMatch(noApartmentTextbox.Text, @"^\d+$") || noApartmentTextbox.TextLength == 0) {
-                errorMessage.Add("Numarul apartamentului este invalid. ");
-            } else if (!this.service.getNoApartments().Contains(Convert.ToInt32(noApartmentTextbox.Text))) {
-                errorMessage.Add("Nu exista niciun apartament cu numarul dat. ");
-            }
-            
-            // Verificare eligibilitate de a detine un apartament
-            else if (this.service.getApartment(Convert.ToInt32(noApartmentTextbox.Text)).owner.Equals("fara") && (DateTime.Now - birthdateDatePicker.Value).TotalDays < 6570) {
-                errorMessage.Add("Persoana este un minor si nu poate detine un apartament. ");
-            }
-            if (!Regex.IsMatch(jobTextbox.Text, @"^[a-zA-Z]+$")) {
-                errorMessage.Add("Job-ul persoanei este invalid. ");
-            }
-
-            // Verificare duplicat
-            String surname = personSurnameTextbox.Text;
-            String forename = personForenameTextbox.Text;
-            if (this.service.exists(forename + " " + surname)) {
-                errorMessage.Add("Persoana exista deja. ");
-            }
-            return errorMessage;
-        }
 
         private void cancelButton_Click(object sender, EventArgs e) {
             /// <summary>
             /// Event handler for cancel button
             /// </summary>
-            
+
             this.Close();
         }
     }
