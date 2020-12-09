@@ -68,35 +68,38 @@ namespace Lab4_Ex4.Validator
         public List<String> validatePerson(Service service, String forename, String surname, String noApartment, String birthdate, String job, String operation="add") {
             List<String> result = new List<String>();
 
-            //Verificare nr apartament.
-            if (!service.getNoApartments().Contains(Convert.ToInt32(noApartment))) {
-                result.Add("Nu exista niciun apartament cu numarul dat. ");
+            List<String> errorMessage = new List<String>();
+
+            // Verificare prenume
+            if (!Regex.IsMatch(forename, @"^[a-zA-Z]+$")) {
+                errorMessage.Add("Prenumele persoanei este invalid. ");
             }
 
-            //Verificare data nastere
-            try {
-                String[] data = birthdate.Split('/');
-                if (data.Length > 3)
-                    throw new Exception();
-                int day = Convert.ToInt32(data[0]);
-                int month = Convert.ToInt32(data[1]);
-                int year = Convert.ToInt32(data[2]);
-                DateTime birthdateDT = new DateTime(year, month, day);
-                if (birthdateDT > DateTime.Today) {
-                    throw new Exception();
-                }
-
-                // Verificare eligibilitate de a detine un apartament
-                if (service.getApartment(Convert.ToInt32(noApartment)).owner.Equals("fara") && (DateTime.Now - birthdateDT).TotalDays < 6570)
-                    result.Add("Persoana este un minor si nu poate detine un apartament. ");
-            } catch (Exception) {
-                result.Add("Data nasterii este invalida. ");
+            // Verificare nume
+            if (!Regex.IsMatch(surname, @"^[a-zA-Z]+$")) {
+                errorMessage.Add("Numele persoanei este invalid. ");
             }
 
-            //Verificare duplicat
-            if (service.exists(forename + " " + surname) && operation=="add") {
-                result.Add("Persoana exista deja. ");
+            // Verificare nr apartament
+            if (!Regex.IsMatch(noApartment, @"^\d+$") || noApartment.Length == 0) {
+                errorMessage.Add("Numarul apartamentului este invalid. ");
+            } else if (!service.getNoApartments().Contains(Convert.ToInt32(noApartment))) {
+                errorMessage.Add("Nu exista niciun apartament cu numarul dat. ");
             }
+
+            // Verificare eligibilitate de a detine un apartament
+            if (service.getApartment(Convert.ToInt32(noApartment)).owner.Equals("fara") && (DateTime.Now - birthdateDatePicker.Value).TotalDays < 6570) {
+                errorMessage.Add("Persoana este un minor si nu poate detine un apartament. ");
+            }
+            if (!Regex.IsMatch(job, @"^[a-zA-Z]+$")) {
+                errorMessage.Add("Job-ul persoanei este invalid. ");
+            }
+
+            // Verificare duplicat
+            if (service.exists(forename + " " + surname)) {
+                errorMessage.Add("Persoana exista deja. ");
+            }
+            return errorMessage;
 
             return result;
         }
