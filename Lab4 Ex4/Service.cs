@@ -1,5 +1,6 @@
 ﻿using Lab4_Ex4.Domain;
 using Lab4_Ex4.GUI;
+using Lab4_Ex4.Validator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,14 +18,17 @@ namespace Lab4_Ex4
     public class Service
     {
         Repository repository;
+        ModelValidator modelValidator;
 
-        public Service(Repository repository) {
+
+        public Service(Repository repository,ModelValidator modelValidator) {
             /// <summary>
             /// Parameterized constructor
             /// </summary>
             /// <param name="repository">Repository containing the database</param>
 
             this.repository = repository;
+            this.modelValidator = modelValidator;
         }
 
         public void delete(Person person) {
@@ -50,6 +54,7 @@ namespace Lab4_Ex4
             this.repository.delete(person);
         }
 
+
         public void delete(Apartment apartment) {
             /// <summary>
             /// Deletes an apartment
@@ -59,6 +64,7 @@ namespace Lab4_Ex4
             this.repository.delete(apartment);
         }
         
+
         public bool exists(String fullName) {
             /// <summary>
             /// Checks if a person with that fullName exists
@@ -74,6 +80,7 @@ namespace Lab4_Ex4
             return false;
         }
 
+
         public List<int> getNoApartments() {
             /// <summary>
             /// Getter for the list of apartments
@@ -87,6 +94,7 @@ namespace Lab4_Ex4
             return noApartmentsList;
         }
 
+
         public Apartment getApartment(int noApartment) {
             /// <summary>
             /// Getter of a single apartment
@@ -96,6 +104,7 @@ namespace Lab4_Ex4
 
             return this.repository.read(noApartment);
         }
+
 
         public void addPerson(String forename, String surname, int noApartment, String birthdate, String job) {
             /// <summary>
@@ -116,6 +125,7 @@ namespace Lab4_Ex4
             this.repository.create(person);
         }
 
+
         public void addApartment(int noApartment, String owner, int noResidents, int surface) {
             /// <summary>
             /// Adds an apartment
@@ -128,6 +138,7 @@ namespace Lab4_Ex4
             Apartment apartment = new Apartment(noApartment, owner, noResidents, surface);
             this.repository.create(apartment);
         }
+
 
         public void updatePerson(Person oldPerson, Person newPerson) {
             /// <summary>
@@ -149,6 +160,7 @@ namespace Lab4_Ex4
             }
         }
 
+
         public void updateApartment(Apartment oldApartment, Apartment newApartment) {
             /// <summary>
             /// Updates an apartment
@@ -168,6 +180,7 @@ namespace Lab4_Ex4
             }
             this.repository.update(oldApartment, newApartment);
         }
+
 
         public List<Person> getPeople() {
             /// <summary>

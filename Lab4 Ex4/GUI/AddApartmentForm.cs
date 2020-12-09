@@ -37,6 +37,7 @@ namespace Lab4_Ex4.GUI
             this.Close();
         }
 
+
         private void addApartmentButton_Click(object sender, EventArgs e) {
             /// <summary>
             /// Event handling for add button
@@ -44,6 +45,7 @@ namespace Lab4_Ex4.GUI
 
             handleAddApartment();
         }
+
 
         private void handleAddApartment() {
             /// <summary>

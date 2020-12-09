@@ -57,6 +57,7 @@ namespace Lab4_Ex4
             }
         }
 
+
         private void savePeople() {
             /// <summary>
             /// Saves all people into the database
@@ -72,6 +73,7 @@ namespace Lab4_Ex4
                 }
             }
         }
+
 
         private void saveApartments() {
             /// <summary>
@@ -100,6 +102,7 @@ namespace Lab4_Ex4
             this.savePeople();
         }
 
+
         public void create(Apartment apartment) {
             /// <summary>
             /// Creates and saves an apartment
@@ -109,6 +112,7 @@ namespace Lab4_Ex4
             this.apartments.Add(apartment);
             this.saveApartments();
         }
+
 
         public Person read(String fullName) {
             /// <summary>
@@ -128,6 +132,7 @@ namespace Lab4_Ex4
             return new Person();
         }
 
+        
         public Apartment read(int noApartment) {
             /// <summary>
             /// Reads an apartment by it's number
@@ -146,6 +151,7 @@ namespace Lab4_Ex4
             return new Apartment();
         }
 
+
         public void update(Person oldPerson, Person newPerson) {
             /// <summary>
             /// Updates a person and saves the changes
@@ -156,6 +162,7 @@ namespace Lab4_Ex4
             people[people.FindIndex(person => person == oldPerson)]=newPerson;
             savePeople();
         }
+
 
         public void update(Apartment oldApartment, Apartment newApartment) {
             /// <summary>
@@ -168,6 +175,7 @@ namespace Lab4_Ex4
             saveApartments();
         }
 
+
         public void delete(Person personToDelete) {
             /// <summary>
             /// Deletes a person and saves the changes
@@ -179,6 +187,7 @@ namespace Lab4_Ex4
 
             this.savePeople();
         }
+
 
         public void delete(Apartment apartmentToDelete) {
             /// <summary>
@@ -194,6 +203,7 @@ namespace Lab4_Ex4
             this.saveApartments();
             this.savePeople();
         }
+
 
         public List<Apartment> getApartments() {
             /// <summary>
@@ -213,6 +223,7 @@ namespace Lab4_Ex4
 
             return this.people;
         }
+
 
         public MonthlyPayment getMonthlyPayment(Apartment apartment) {
             /// <summary>
