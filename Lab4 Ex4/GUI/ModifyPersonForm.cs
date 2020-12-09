@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Linq.Expressions;
+using Lab4_Ex4.Validator;
 
 namespace Lab4_Ex4.GUI
 {
@@ -89,7 +90,11 @@ namespace Lab4_Ex4.GUI
             /// Handler for person modify
             /// </summary>
 
-            List<String> errorMessage = new List<String>(validateAllInput());
+            ModelValidator modelValidator = new ModelValidator(this.service);
+            List<String> errorMessage = new List<String>();
+
+            errorMessage.AddRange(modelValidator.validatePerson(searchedPersonGrid, modifyPersonGrid));
+
             try {
                 if (errorMessage.Count != 0) {
                     throw new ArgumentException();
@@ -125,70 +130,6 @@ namespace Lab4_Ex4.GUI
                 errorMessageLabel.Text = "Alegeti persoana de modificat.";
                 errorMessageLabel.ForeColor = Color.DarkRed;
             }
-        }
-
-
-        private List<String> validateAllInput() {
-            /// <summary>
-            /// Model binding and validation to person
-            /// </summary>
-            /// <returns>Error list</returns>
-
-            List<String> errorMessage = new List<String>();
-            if (searchedPersonGrid.SelectedRows.Count == 0)
-                errorMessage.Add("Selectati mai intai persoana. ");
-            else {
-                String surname = modifyPersonGrid.Rows[0].Cells[0].Value.ToString();
-                String forename = modifyPersonGrid.Rows[0].Cells[1].Value.ToString();
-                String noApartment = modifyPersonGrid.Rows[0].Cells[2].Value.ToString();
-                String birthdate = modifyPersonGrid.Rows[0].Cells[3].Value.ToString();
-
-                // Verificare prenume
-                if (!Regex.IsMatch(forename, @"^[a-zA-Z]+$")) {
-                    errorMessage.Add("Prenumele persoanei este invalid. ");
-                }
-
-                // Verificare nume
-                if (!Regex.IsMatch(surname, @"^[a-zA-Z]+$")) {
-                    errorMessage.Add("Numele persoanei este invalid. ");
-                }
-
-                // Verificare nr apartament
-                if (!Regex.IsMatch(noApartment, @"^\d+$")) {
-                    errorMessage.Add("Numarul apartamentului este invalid. ");
-                } else if (!this.service.getNoApartments().Contains(Convert.ToInt32(noApartment))) {
-                    errorMessage.Add("Nu exista niciun apartament cu numarul dat. ");
-                }
-
-                // Verificare data nasterii
-                try {
-                    String[] data = birthdate.Split('/');
-                    if (data.Length > 3)
-                        throw new Exception();
-                    int day = Convert.ToInt32(data[0]);
-                    int month = Convert.ToInt32(data[1]);
-                    int year = Convert.ToInt32(data[2]);
-                    DateTime birthdateDT = new DateTime(year, month, day);
-                    if (birthdateDT > DateTime.Today) {
-                        throw new Exception();
-                    }
-
-
-                    // Verificare eligibilitate de a detine un apartament
-                    if (this.service.getApartment(Convert.ToInt32(noApartment)).owner.Equals("fara") && (DateTime.Now - birthdateDT).TotalDays < 6570)
-                        errorMessage.Add("Persoana este un minor si nu poate detine un apartament. ");
-                } catch (Exception) {
-                    errorMessage.Add("Data nasterii este invalida. ");
-                }
-
-                // Verificare duplicat
-                int index = searchedPersonGrid.CurrentCell.RowIndex;
-                if (this.service.exists(forename + " " + surname)) {
-                    if(forename!=searchedPersonGrid.SelectedRows[index].Cells[1].Value.ToString() && surname!=searchedPersonGrid.SelectedRows[index].Cells[0].Value.ToString())
-                        errorMessage.Add("Persoana exista deja. ");
-                }
-            }
-            return errorMessage;
         }
     }
 }

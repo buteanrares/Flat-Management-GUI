@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
+using Lab4_Ex4.Validator;
 
 namespace Lab4_Ex4.GUI
 {
@@ -49,8 +50,12 @@ namespace Lab4_Ex4.GUI
             /// <summary>
             /// Handler for add appartment operation
             /// </summary>
+            
+            ModelValidator modelValidator = new ModelValidator(this.service);
+            List<String> errorMessage = new List<String>();
 
-            List<String> errorMessage = new List<String>(validateAllInput());
+            errorMessage.AddRange(modelValidator.validateApartment(noApartmentTextbox,surfaceTextbox));
+
             try {
                 if (errorMessage.Count != 0) {
                     throw new ArgumentException();
@@ -68,30 +73,6 @@ namespace Lab4_Ex4.GUI
                     errorMessageLabel.Text += error;
                 }
             };
-        }
-
-
-        private List<String> validateAllInput() {
-            /// <summary>
-            /// Input model binding and validation to apartment
-            /// </summary>
-            /// <returns>Error results</returns>
-            
-            List<String> errorMessage = new List<String>();
-            
-            //Verificare numar apartament
-            if (!Regex.IsMatch(noApartmentTextbox.Text, @"^\d+$") || noApartmentTextbox.TextLength == 0) {
-                errorMessage.Add("Numarul apartamentului este invalid. ");
-            } else if (this.service.getNoApartments().Contains(Convert.ToInt32(noApartmentTextbox.Text)))
-                errorMessage.Add("Un apartament cu acel numar exista deja. ");
-
-            //Verificare suprafata
-            if (!Regex.IsMatch(surfaceTextbox.Text, @"^\d+$") || surfaceTextbox.TextLength == 0) {
-                errorMessage.Add("Suprafata este invalida. ");
-            } else if (Convert.ToInt32(surfaceTextbox.Text) <= 0) {
-                errorMessage.Add("Suprafata trebuie sa fie mai mare decat zero. ");
-            }
-            return errorMessage;
         }
     }
 }
