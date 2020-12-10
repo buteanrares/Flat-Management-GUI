@@ -9,35 +9,54 @@ using Lab4_Ex4.Domain;
 
 namespace Lab4_Ex4.Validator
 {
+    /// <summary>
+    /// Validator class for Person and Apartment
+    /// </summary>
     class ModelValidator
     {
         private Service service;
+
         public ModelValidator(Service service) {
+            /// <summary>
+            /// Parameterized constructor
+            /// </summary>
+            /// <param name="service"></param>
+
             this.service = service;
         }
 
 
         public List<String> validatePerson(TextBox forenameTextbox, TextBox surnameTextbox, TextBox noApartmentTextbox, DateTimePicker birthdateDatePicker, TextBox jobTextbox) {
+            /// <summary>
+            /// Person validator for AddPersonForm
+            /// </summary>
+            /// <param name="forenameTextbox"></param>
+            /// <param name="surnameTextbox"></param>
+            /// <param name="noApartmentTextbox"></param>
+            /// <param name="birthdateDatePicker"></param>
+            /// <param name="jobTextbox"></param>
+            /// <returns>Lists of string of errors. These errors are displayed for the user.</returns>
+
             List<String> result = new List<String>();
 
-            // Verificare prenume
-            if (!Regex.IsMatch(surnameTextbox.Text, @"^[a-zA-Z]+$")) {
+            // Forename validator
+            if (!Regex.IsMatch(forenameTextbox.Text, @"^[a-zA-Z]+$")) {
                 result.Add("Prenumele persoanei este invalid. ");
             }
 
-            // Verificare nume
+            // Surname validator
             if (!Regex.IsMatch(surnameTextbox.Text, @"^[a-zA-Z]+$")) {
                 result.Add("Numele persoanei este invalid. ");
             }
 
-            // Verificare nr apartament
+            // NoApartment validator
             if (!Regex.IsMatch(noApartmentTextbox.Text, @"^\d+$") || noApartmentTextbox.TextLength == 0) {
                 result.Add("Numarul apartamentului este invalid. ");
             } else if (!this.service.getNoApartments().Contains(Convert.ToInt32(noApartmentTextbox.Text))) {
                 result.Add("Nu exista niciun apartament cu numarul dat. ");
             }
 
-            // Verificare eligibilitate de a detine un apartament
+            // Apartment ownership eligibility validation
             else if (this.service.getApartment(Convert.ToInt32(noApartmentTextbox.Text)).owner.Equals("fara") && (DateTime.Now - birthdateDatePicker.Value).TotalDays < 6570) {
                 result.Add("Persoana este un minor si nu poate detine un apartament. ");
             }
@@ -45,7 +64,7 @@ namespace Lab4_Ex4.Validator
                 result.Add("Job-ul persoanei este invalid. ");
             }
 
-            // Verificare duplicat
+            // Duplicate validation
             String surname = surnameTextbox.Text;
             String forename = forenameTextbox.Text;
             if (this.service.exists(forename + " " + surname)) {
@@ -57,15 +76,22 @@ namespace Lab4_Ex4.Validator
 
 
         public List<String> validateApartment(TextBox noApartmentTextbox, TextBox surfaceTextbox) {
+            /// <summary>
+            /// Apartment validator for AddApartmentForm
+            /// </summary>
+            /// <param name="noApartmentTextbox"></param>
+            /// <param name="surfaceTextbox"></param>
+            /// <returns>List of errors. These are displayed to the user.</returns>
+
             List<String> result = new List<String>();
 
-            //Verificare numar apartament
+            // NoApartment validation
             if (!Regex.IsMatch(noApartmentTextbox.Text, @"^\d+$") || noApartmentTextbox.TextLength == 0) {
                 result.Add("Numarul apartamentului este invalid. ");
             } else if (this.service.getNoApartments().Contains(Convert.ToInt32(noApartmentTextbox.Text)))
                 result.Add("Un apartament cu acel numar exista deja. ");
 
-            //Verificare suprafata
+            // Surface validation
             if (!Regex.IsMatch(surfaceTextbox.Text, @"^\d+$") || surfaceTextbox.TextLength == 0) {
                 result.Add("Suprafata este invalida. ");
             } else if (Convert.ToInt32(surfaceTextbox.Text) <= 0) {
@@ -77,8 +103,16 @@ namespace Lab4_Ex4.Validator
 
 
         public List<String> validateApartment(DataGridView searchApartmentDGV, DataGridView modifyApartmentDGV) {
+            /// <summary>
+            /// Apartment validator for ModifyApartmentForm
+            /// </summary>
+            /// <param name="searchApartmentDGV"></param>
+            /// <param name="modifyApartmentDGV"></param>
+            /// <returns>List of errors. These are displayed to the user.</returns>
+
             List<String> result = new List<String>();
 
+            // DGV Row selected check
             if (searchApartmentDGV.SelectedRows.Count == 0)
                 result.Add("Selectati mai intai apartamentul. ");
             else {
@@ -87,13 +121,13 @@ namespace Lab4_Ex4.Validator
                 String noResidents = modifyApartmentDGV.Rows[0].Cells[2].Value.ToString();
                 String surface = modifyApartmentDGV.Rows[0].Cells[3].Value.ToString();
 
-                //Verificare numar apartament
+                // NoApartment validation
                 if (!Regex.IsMatch(noApartment, @"^\d+$") || noApartment.Length == 0) {
                     result.Add("Numarul apartamentului este invalid. ");
                 } else if (this.service.getNoApartments().Contains(Convert.ToInt32(noApartment)) && !noApartment.Equals(searchApartmentDGV.SelectedRows[0].Cells[0].Value.ToString()))
                     result.Add("Un apartament cu acel numar exista deja. ");
 
-                //Verificare persoana
+                // Owner (FullName) validation
                 List<String> personNames = new List<String>();
                 foreach (Person person in this.service.getPeople()) {
                     personNames.Add(person.getFullName("FS"));
@@ -101,14 +135,14 @@ namespace Lab4_Ex4.Validator
                 if (!personNames.Contains(owner))
                     result.Add("Persoana nu exista. ");
 
-                //Verificare numar locatar
+                // NoResidents validation
                 if (!Regex.IsMatch(noResidents, @"^\d+$") || noResidents.Length == 0) {
                     result.Add("Numarul locatarilor este invalid. ");
                 } else if (noResidents != searchApartmentDGV.SelectedRows[0].Cells[2].Value.ToString()) {
                     result.Add("Nu puteti modifica numarul de locatari. ");
                 }
 
-                //Verificare suprafata
+                // Surface validation
                 if (!Regex.IsMatch(surface, @"^\d+$") || surface.Length == 0) {
                     result.Add("Suprafata este invalida. ");
                 } else if (Convert.ToInt32(surface) <= 0) {
@@ -121,8 +155,16 @@ namespace Lab4_Ex4.Validator
 
 
         public List<String> validatePerson(DataGridView searchPersonDGV, DataGridView modifyPersonDGV) {
+            /// <summary>
+            /// Person validator for ModifyPersonForm
+            /// </summary>
+            /// <param name="searchPersonDGV"></param>
+            /// <param name="modifyPersonDGV"></param>
+            /// <returns>List of errors. These are displayed to the user.</returns>
+
             List<String> result = new List<string>();
 
+            // DGV Row selected check
             if (searchPersonDGV.SelectedRows.Count == 0)
                 result.Add("Selectati mai intai persoana. ");
             else {
@@ -131,24 +173,24 @@ namespace Lab4_Ex4.Validator
                 String noApartment = modifyPersonDGV.Rows[0].Cells[2].Value.ToString();
                 String birthdate = modifyPersonDGV.Rows[0].Cells[3].Value.ToString();
 
-                // Verificare prenume
+                // Forename validation
                 if (!Regex.IsMatch(forename, @"^[a-zA-Z]+$")) {
                     result.Add("Prenumele persoanei este invalid. ");
                 }
 
-                // Verificare nume
+                // Surname validation
                 if (!Regex.IsMatch(surname, @"^[a-zA-Z]+$")) {
                     result.Add("Numele persoanei este invalid. ");
                 }
 
-                // Verificare nr apartament
+                // NoApartment validation
                 if (!Regex.IsMatch(noApartment, @"^\d+$")) {
                     result.Add("Numarul apartamentului este invalid. ");
                 } else if (!this.service.getNoApartments().Contains(Convert.ToInt32(noApartment))) {
                     result.Add("Nu exista niciun apartament cu numarul dat. ");
                 }
 
-                // Verificare data nasterii
+                // Birthdate validation
                 try {
                     String[] data = birthdate.Split('/');
                     if (data.Length > 3)
@@ -161,7 +203,7 @@ namespace Lab4_Ex4.Validator
                         throw new ArgumentException();
                     }
 
-                    // Verificare eligibilitate de a detine un apartament
+                    // Apartment ownership eligibility validation
                     if (this.service.getApartment(Convert.ToInt32(noApartment)).owner.Equals("fara") && (DateTime.Now - birthdateDT).TotalDays < 6570)
                         result.Add("Persoana este un minor si nu poate detine un apartament. ");
                 } catch (ArgumentException) {
@@ -171,7 +213,7 @@ namespace Lab4_Ex4.Validator
                     // noApartment validation is already handled above
                 }
 
-                // Verificare duplicat
+                // Duplicate validation
                 int index = searchPersonDGV.CurrentCell.RowIndex;
                 if (this.service.exists(forename + " " + surname)) {
                     if (forename != searchPersonDGV.SelectedRows[index].Cells[1].Value.ToString() && surname != searchPersonDGV.SelectedRows[index].Cells[0].Value.ToString())

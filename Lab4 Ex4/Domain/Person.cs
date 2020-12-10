@@ -16,7 +16,7 @@ namespace Lab4_Ex4.Domain
     {
 
         ///<summary>
-        /// Object attributes and model binding
+        /// Object attributes. Getted setters.
         ///</summary>
 
         public String forename { get; set; }
@@ -28,7 +28,6 @@ namespace Lab4_Ex4.Domain
         public String birthdate { get; set; }
 
         public String job { get; set; }
-
 
 
         public Person() {
