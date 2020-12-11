@@ -152,8 +152,8 @@ namespace Lab4_Ex4
             /// </summary>
             /// <param name="oldPerson">Person to be updated</param>
             /// <param name="newPerson">Person to replace the old one</param>
-            
-            people[people.FindIndex(person => person == oldPerson)]=newPerson;
+
+            people[people.FindIndex(person => person == oldPerson)] = newPerson;
             savePeople();
         }
 

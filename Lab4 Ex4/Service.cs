@@ -159,12 +159,34 @@ namespace Lab4_Ex4
 
             //Copying the list of people. Changing the main list while browsing it throws an exception.
             List<Person> peopleCopy = this.getPeople();
-            for (int i = 0; i < peopleCopy.Count; i++) {
-                if (peopleCopy[i].noApartment == oldApartment.noApartment) {
-                    Person newPerson = new Person(peopleCopy[i]);
-                    newPerson.noApartment = newApartment.noApartment;
-                    this.repository.update(peopleCopy[i], newPerson);
+
+            //Updating people apartment number if it changes
+            if (oldApartment.noApartment != newApartment.noApartment) {
+                for (int i = 0; i < peopleCopy.Count; i++) {
+                    if (peopleCopy[i].noApartment == oldApartment.noApartment) {
+                        Person newPerson = new Person(peopleCopy[i]);
+                        newPerson.noApartment = newApartment.noApartment;
+                        this.repository.update(peopleCopy[i], newPerson);
+                    }
                 }
+            }
+
+            //Changing the owner of an apartment will automatically move that person into the apartment
+
+            if (oldApartment.owner != newApartment.owner) {
+                Person oldPerson = new Person(this.repository.read(newApartment.owner));
+                Person newPerson = new Person(oldPerson);
+                newPerson.noApartment = newApartment.noApartment;
+
+
+                if (oldApartment.noResidents == 0) {
+                    oldApartment.owner = "fara";
+                }
+
+                this.repository.update(oldApartment, newApartment);
+                this.updatePerson(oldPerson, newPerson);
+                return;
+
             }
             this.repository.update(oldApartment, newApartment);
         }

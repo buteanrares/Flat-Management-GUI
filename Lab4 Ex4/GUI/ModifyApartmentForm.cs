@@ -91,7 +91,7 @@ namespace Lab4_Ex4.GUI
                 errorMessageLabel.Text = "Apartamentul a fost modificat.";
                 errorMessageLabel.ForeColor = Color.DarkGreen;
 
-            } catch (ArgumentException) {
+            } catch (AggregateException) {
                 errorMessageLabel.Text = "";
                 errorMessageLabel.ForeColor = Color.DarkRed;
                 foreach(String error in errorMessage) {
