@@ -147,8 +147,15 @@ namespace Lab4_Ex4
             showEventsForm.Show();
         }
 
+
         private void setDBbutton_Click(object sender, EventArgs e)
         {
+            /// <summary>
+            /// Handler for setting the Database folder inside machine
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+
             String exitMessage = this.service.selectDB(this.folderBrowserDialog);
             System.Windows.Forms.MessageBox.Show(exitMessage);
 

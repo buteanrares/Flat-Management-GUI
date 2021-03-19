@@ -185,5 +185,8 @@
   <ItemGroup>
     <None Include="Resources\DB-Fixed.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DB-FixedColors.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

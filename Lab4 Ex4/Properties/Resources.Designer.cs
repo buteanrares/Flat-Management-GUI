@@ -69,5 +69,15 @@ namespace Lab4_Ex4.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DB_FixedColors {
+            get {
+                object obj = ResourceManager.GetObject("DB-FixedColors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
