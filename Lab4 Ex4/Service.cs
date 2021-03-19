@@ -311,8 +311,15 @@ namespace Lab4_Ex4
             return "fara";
         }
 
+
         public String selectDB(System.Windows.Forms.FolderBrowserDialog folderBrowsingDialog)
         {
+            /// <summary>
+            /// Ensures DB valid selection
+            /// </summary>
+            /// <param name="folderBrowsingDialog"></param>
+            /// <returns>Exit String message depending on user's input</returns>
+
             System.Windows.Forms.DialogResult result = folderBrowsingDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowsingDialog.SelectedPath))
             {

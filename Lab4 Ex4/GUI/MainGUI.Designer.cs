@@ -234,7 +234,7 @@ namespace Lab4_Ex4
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.Image = global::Lab4_Ex4.Properties.Resources.DB_Fixed;
+            this.pictureBox2.Image = global::Lab4_Ex4.Properties.Resources.DB_FixedColors;
             this.pictureBox2.Location = new System.Drawing.Point(89, 565);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(60, 59);
