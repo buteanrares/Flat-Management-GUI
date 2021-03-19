@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4 Ex4", "Lab4 Ex4\Lab4 Ex4.csproj", "{F2490C95-AF74-401B-8039-0FB4FD62AB71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatsManagement", "Lab4 Ex4\FlatsManagement.csproj", "{F2490C95-AF74-401B-8039-0FB4FD62AB71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
