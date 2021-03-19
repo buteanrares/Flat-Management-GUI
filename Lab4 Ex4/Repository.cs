@@ -18,6 +18,15 @@ namespace Lab4_Ex4
         List<Person> people = new List<Person>();
         String dbFilepath;
 
+        public Repository()
+        {
+            /// <summary>
+            /// Default constructor
+            /// </summary>
+
+            this.dbFilepath = null;
+        }
+
         public Repository(String dbFilepath) {
             /// <summary>
             /// Parameterized constructor

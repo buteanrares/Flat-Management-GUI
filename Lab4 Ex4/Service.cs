@@ -1,6 +1,7 @@
 ﻿using Lab4_Ex4.Domain;
 using Lab4_Ex4.GUI;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace Lab4_Ex4
     {
         Repository repository;
 
-        public Service(Repository repository) {
+        public Service(Repository repository)
+        {
             /// <summary>
             /// Parameterized constructor
             /// </summary>
@@ -27,7 +29,8 @@ namespace Lab4_Ex4
             this.repository = repository;
         }
 
-        public void delete(Person person) {
+        public void delete(Person person)
+        {
             /// <summary>
             /// Deletes a person
             /// </summary>
@@ -40,9 +43,10 @@ namespace Lab4_Ex4
             Apartment apartment = this.getApartment(person.noApartment);
             Apartment updateApartment = this.getApartment(person.noApartment);
             updateApartment.noResidents--;
-            if (updateApartment.owner.Equals(person.getFullName("FS"))){
+            if (updateApartment.owner.Equals(person.getFullName("FS")))
+            {
                 // THIS THROWS EXCEPTION
-                String newOwner = this.findNewOwner(updateApartment.noApartment,person);
+                String newOwner = this.findNewOwner(updateApartment.noApartment, person);
                 //
                 updateApartment.owner = newOwner;
             }
@@ -50,7 +54,8 @@ namespace Lab4_Ex4
             this.repository.delete(person);
         }
 
-        public void delete(Apartment apartment) {
+        public void delete(Apartment apartment)
+        {
             /// <summary>
             /// Deletes an apartment
             /// </summary>
@@ -58,8 +63,9 @@ namespace Lab4_Ex4
 
             this.repository.delete(apartment);
         }
-        
-        public bool exists(String fullName) {
+
+        public bool exists(String fullName)
+        {
             /// <summary>
             /// Checks if a person with that fullName exists
             /// </summary>
@@ -67,27 +73,31 @@ namespace Lab4_Ex4
             /// <returns>Boolean valeus depending if that person exists or not</returns>
 
             String[] name = fullName.Split(' ');
-            foreach(Person person in this.repository.getPeople()) {
+            foreach (Person person in this.repository.getPeople())
+            {
                 if (person.forename.Equals(name[0]) && person.surname.Equals(name[1]))
                     return true;
             }
             return false;
         }
 
-        public List<int> getNoApartments() {
+        public List<int> getNoApartments()
+        {
             /// <summary>
             /// Getter for the list of apartments
             /// </summary>
             /// <returns>The list of apartments</returns>
 
             List<int> noApartmentsList = new List<int>();
-            foreach(Apartment apartment in this.repository.getApartments()) {
+            foreach (Apartment apartment in this.repository.getApartments())
+            {
                 noApartmentsList.Add(apartment.noApartment);
             }
             return noApartmentsList;
         }
 
-        public Apartment getApartment(int noApartment) {
+        public Apartment getApartment(int noApartment)
+        {
             /// <summary>
             /// Getter of a single apartment
             /// </summary>
@@ -97,7 +107,8 @@ namespace Lab4_Ex4
             return this.repository.read(noApartment);
         }
 
-        public void addPerson(String forename, String surname, int noApartment, String birthdate, String job) {
+        public void addPerson(String forename, String surname, int noApartment, String birthdate, String job)
+        {
             /// <summary>
             /// Adds a person
             /// </summary>
@@ -116,7 +127,8 @@ namespace Lab4_Ex4
             this.repository.create(person);
         }
 
-        public void addApartment(int noApartment, String owner, int noResidents, int surface) {
+        public void addApartment(int noApartment, String owner, int noResidents, int surface)
+        {
             /// <summary>
             /// Adds an apartment
             /// </summary>
@@ -124,12 +136,13 @@ namespace Lab4_Ex4
             /// <param name="owner">Apartment's owner</param>
             /// <param name="noResidents">Apartment's number of residents</param>
             /// <param name="surface">Apartment's surface</param>
-            
+
             Apartment apartment = new Apartment(noApartment, owner, noResidents, surface);
             this.repository.create(apartment);
         }
 
-        public void updatePerson(Person oldPerson, Person newPerson) {
+        public void updatePerson(Person oldPerson, Person newPerson)
+        {
             /// <summary>
             /// Updates a person
             /// </summary>
@@ -137,7 +150,8 @@ namespace Lab4_Ex4
             /// <param name="newPerson">Person to replace the old one</param>
 
             this.repository.update(oldPerson, newPerson);
-            if (newPerson.noApartment != oldPerson.noApartment) {
+            if (newPerson.noApartment != oldPerson.noApartment)
+            {
                 incrementNoResidents(this.repository.read(newPerson.noApartment));
                 decrementNoResidents(this.repository.read(oldPerson.noApartment));
 
@@ -149,7 +163,8 @@ namespace Lab4_Ex4
             }
         }
 
-        public void updateApartment(Apartment oldApartment, Apartment newApartment) {
+        public void updateApartment(Apartment oldApartment, Apartment newApartment)
+        {
             /// <summary>
             /// Updates an apartment
             /// </summary>
@@ -161,9 +176,12 @@ namespace Lab4_Ex4
             List<Person> peopleCopy = this.getPeople();
 
             //Updating people apartment number if it changes
-            if (oldApartment.noApartment != newApartment.noApartment) {
-                for (int i = 0; i < peopleCopy.Count; i++) {
-                    if (peopleCopy[i].noApartment == oldApartment.noApartment) {
+            if (oldApartment.noApartment != newApartment.noApartment)
+            {
+                for (int i = 0; i < peopleCopy.Count; i++)
+                {
+                    if (peopleCopy[i].noApartment == oldApartment.noApartment)
+                    {
                         Person newPerson = new Person(peopleCopy[i]);
                         newPerson.noApartment = newApartment.noApartment;
                         this.repository.update(peopleCopy[i], newPerson);
@@ -173,13 +191,15 @@ namespace Lab4_Ex4
 
             //Changing the owner of an apartment will automatically move that person into the apartment
 
-            if (oldApartment.owner != newApartment.owner) {
+            if (oldApartment.owner != newApartment.owner)
+            {
                 Person oldPerson = new Person(this.repository.read(newApartment.owner));
                 Person newPerson = new Person(oldPerson);
                 newPerson.noApartment = newApartment.noApartment;
 
 
-                if (oldApartment.noResidents == 0) {
+                if (oldApartment.noResidents == 0)
+                {
                     oldApartment.owner = "fara";
                 }
 
@@ -191,7 +211,8 @@ namespace Lab4_Ex4
             this.repository.update(oldApartment, newApartment);
         }
 
-        public List<Person> getPeople() {
+        public List<Person> getPeople()
+        {
             /// <summary>
             /// Getter for the list of people
             /// </summary>
@@ -200,7 +221,8 @@ namespace Lab4_Ex4
             return this.repository.getPeople();
         }
 
-        public List<Apartment> getApartments() {
+        public List<Apartment> getApartments()
+        {
             /// <summary>
             /// Getter for the list of apartments
             /// </summary>
@@ -209,7 +231,8 @@ namespace Lab4_Ex4
             return this.repository.getApartments();
         }
 
-        public MonthlyPayment getMonthlyPayment(Apartment apartment) {
+        public MonthlyPayment getMonthlyPayment(Apartment apartment)
+        {
             /// <summary>
             /// Getter for the monthly payment of an apartment
             /// </summary>
@@ -219,7 +242,8 @@ namespace Lab4_Ex4
             return this.repository.getMonthlyPayment(apartment);
         }
 
-        private void incrementNoResidents(Apartment apartment) {
+        private void incrementNoResidents(Apartment apartment)
+        {
             /// <summary>
             /// Increments the number of residents of an apartment
             /// </summary>
@@ -230,21 +254,24 @@ namespace Lab4_Ex4
             this.repository.update(apartment, newApartment);
         }
 
-        private void decrementNoResidents(Apartment apartment) {
+        private void decrementNoResidents(Apartment apartment)
+        {
             /// <summary>
             /// Decrements the number of residents of an apartment
             /// </summary>
             /// <param name="apartment">The apartment explained above</param>
-            
+
             Apartment newApartment = this.repository.read(apartment.noApartment);
             newApartment.noResidents--;
-            if (newApartment.noResidents == 0) {
+            if (newApartment.noResidents == 0)
+            {
                 newApartment.owner = "fara";
             }
             this.repository.update(apartment, newApartment);
         }
 
-        public List<Person> getResidents(int noApartment) {
+        public List<Person> getResidents(int noApartment)
+        {
             /// <summary>
             /// Getter for the list of residents of an apartment
             /// </summary>
@@ -252,14 +279,16 @@ namespace Lab4_Ex4
             /// <returns>Persons living in an specific apartment</returns>
 
             List<Person> residents = new List<Person>();
-            foreach(Person person in this.getPeople()) {
+            foreach (Person person in this.getPeople())
+            {
                 if (person.noApartment == noApartment)
                     residents.Add(person);
             }
             return residents;
         }
 
-        public String findNewOwner(int noApartment, Person exOwner) {
+        public String findNewOwner(int noApartment, Person exOwner)
+        {
             /// <summary>
             /// Finds a new owner of an an apartment
             /// </summary>
@@ -271,13 +300,42 @@ namespace Lab4_Ex4
             var personVar = people.Find(person => person == exOwner);
             people.Remove(personVar);
 
-            foreach (Person person in people) {
+            foreach (Person person in people)
+            {
                 //TODO Verify eligibility of apartment ownership
-                if (person.noApartment == noApartment) {
+                if (person.noApartment == noApartment)
+                {
                     return person.getFullName();
                 }
             }
             return "fara";
+        }
+
+        public String selectDB(System.Windows.Forms.FolderBrowserDialog folderBrowsingDialog)
+        {
+            System.Windows.Forms.DialogResult result = folderBrowsingDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowsingDialog.SelectedPath))
+            {
+                if (File.Exists(folderBrowsingDialog.SelectedPath + "\\apartments.csv") && File.Exists(folderBrowsingDialog.SelectedPath+"\\people.csv"))
+                {
+                    this.repository = new Repository(folderBrowsingDialog.SelectedPath);
+                    try
+                    {
+                        this.repository.loadFromFile();
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        return "EROARE\nIncarcarea datelor din fisierele BD a esuat." +
+                        "\nContinutul nu modeleaza atributele unor apartamente sau locatari dupa format CSV.";
+                    }
+                    return "Baza de date a fost setata cu succes";
+                }
+                else
+                {
+                    return "EROARE\nBaza de date trebuie sa contina doar fisierele <apartments.csv> si <people.csv>.";
+                }
+            }
+            return "EROARE\nPath invalid.";
         }
     }
 }

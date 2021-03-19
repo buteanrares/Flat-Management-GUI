@@ -45,22 +45,24 @@ namespace Lab4_Ex4
             this.modifyApartmentButton = new System.Windows.Forms.Button();
             this.showPicturebox = new System.Windows.Forms.PictureBox();
             this.showEventsButton = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.setDBbutton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plusPicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minusPicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modifyPicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.showPicturebox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // butonAddPerson
             // 
-            this.butonAddPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.butonAddPerson.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.butonAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butonAddPerson.Location = new System.Drawing.Point(162, 51);
+            this.butonAddPerson.Location = new System.Drawing.Point(170, 38);
             this.butonAddPerson.Name = "butonAddPerson";
-            this.butonAddPerson.Size = new System.Drawing.Size(169, 27);
+            this.butonAddPerson.Size = new System.Drawing.Size(169, 26);
             this.butonAddPerson.TabIndex = 0;
             this.butonAddPerson.Text = "Adaugare persoana";
             this.butonAddPerson.UseVisualStyleBackColor = true;
@@ -68,13 +70,11 @@ namespace Lab4_Ex4
             // 
             // buttonAddApartment
             // 
-            this.buttonAddApartment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddApartment.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonAddApartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddApartment.Location = new System.Drawing.Point(162, 84);
+            this.buttonAddApartment.Location = new System.Drawing.Point(170, 71);
             this.buttonAddApartment.Name = "buttonAddApartment";
-            this.buttonAddApartment.Size = new System.Drawing.Size(169, 27);
+            this.buttonAddApartment.Size = new System.Drawing.Size(169, 26);
             this.buttonAddApartment.TabIndex = 1;
             this.buttonAddApartment.Text = "Adaugare apartament";
             this.buttonAddApartment.UseVisualStyleBackColor = true;
@@ -82,13 +82,11 @@ namespace Lab4_Ex4
             // 
             // buttonMonthlyPayments
             // 
-            this.buttonMonthlyPayments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMonthlyPayments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonMonthlyPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMonthlyPayments.Location = new System.Drawing.Point(162, 480);
+            this.buttonMonthlyPayments.Location = new System.Drawing.Point(170, 467);
             this.buttonMonthlyPayments.Name = "buttonMonthlyPayments";
-            this.buttonMonthlyPayments.Size = new System.Drawing.Size(169, 27);
+            this.buttonMonthlyPayments.Size = new System.Drawing.Size(169, 26);
             this.buttonMonthlyPayments.TabIndex = 2;
             this.buttonMonthlyPayments.Text = "Afisare cheltuieli lunare";
             this.buttonMonthlyPayments.UseVisualStyleBackColor = true;
@@ -96,13 +94,11 @@ namespace Lab4_Ex4
             // 
             // showPeopleButton
             // 
-            this.showPeopleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.showPeopleButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showPeopleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPeopleButton.Location = new System.Drawing.Point(162, 370);
+            this.showPeopleButton.Location = new System.Drawing.Point(170, 357);
             this.showPeopleButton.Name = "showPeopleButton";
-            this.showPeopleButton.Size = new System.Drawing.Size(169, 27);
+            this.showPeopleButton.Size = new System.Drawing.Size(169, 26);
             this.showPeopleButton.TabIndex = 3;
             this.showPeopleButton.Text = "Afisare persoane";
             this.showPeopleButton.UseVisualStyleBackColor = true;
@@ -110,13 +106,11 @@ namespace Lab4_Ex4
             // 
             // showApartmentsButton
             // 
-            this.showApartmentsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.showApartmentsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showApartmentsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showApartmentsButton.Location = new System.Drawing.Point(162, 403);
+            this.showApartmentsButton.Location = new System.Drawing.Point(170, 390);
             this.showApartmentsButton.Name = "showApartmentsButton";
-            this.showApartmentsButton.Size = new System.Drawing.Size(169, 27);
+            this.showApartmentsButton.Size = new System.Drawing.Size(169, 26);
             this.showApartmentsButton.TabIndex = 4;
             this.showApartmentsButton.Text = "Afisare apartamente";
             this.showApartmentsButton.UseVisualStyleBackColor = true;
@@ -124,39 +118,33 @@ namespace Lab4_Ex4
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(81, 480);
+            this.pictureBox1.Location = new System.Drawing.Point(82, 467);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 58);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
             // plusPicturebox
             // 
-            this.plusPicturebox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plusPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.plusPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("plusPicturebox.Image")));
-            this.plusPicturebox.Location = new System.Drawing.Point(81, 51);
+            this.plusPicturebox.Location = new System.Drawing.Point(82, 38);
             this.plusPicturebox.Name = "plusPicturebox";
-            this.plusPicturebox.Size = new System.Drawing.Size(60, 60);
+            this.plusPicturebox.Size = new System.Drawing.Size(67, 58);
             this.plusPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.plusPicturebox.TabIndex = 6;
             this.plusPicturebox.TabStop = false;
             // 
             // deletePersonButton
             // 
-            this.deletePersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.deletePersonButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deletePersonButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deletePersonButton.Location = new System.Drawing.Point(162, 157);
+            this.deletePersonButton.Location = new System.Drawing.Point(170, 144);
             this.deletePersonButton.Name = "deletePersonButton";
-            this.deletePersonButton.Size = new System.Drawing.Size(169, 27);
+            this.deletePersonButton.Size = new System.Drawing.Size(169, 26);
             this.deletePersonButton.TabIndex = 7;
             this.deletePersonButton.Text = "Stergere persoana";
             this.deletePersonButton.UseVisualStyleBackColor = true;
@@ -164,13 +152,11 @@ namespace Lab4_Ex4
             // 
             // deleteApartmentButton
             // 
-            this.deleteApartmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteApartmentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deleteApartmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteApartmentButton.Location = new System.Drawing.Point(162, 190);
+            this.deleteApartmentButton.Location = new System.Drawing.Point(170, 177);
             this.deleteApartmentButton.Name = "deleteApartmentButton";
-            this.deleteApartmentButton.Size = new System.Drawing.Size(169, 27);
+            this.deleteApartmentButton.Size = new System.Drawing.Size(169, 26);
             this.deleteApartmentButton.TabIndex = 8;
             this.deleteApartmentButton.Text = "Stergere apartament";
             this.deleteApartmentButton.UseVisualStyleBackColor = true;
@@ -178,39 +164,33 @@ namespace Lab4_Ex4
             // 
             // minusPicturebox
             // 
-            this.minusPicturebox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.minusPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.minusPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("minusPicturebox.Image")));
-            this.minusPicturebox.Location = new System.Drawing.Point(81, 157);
+            this.minusPicturebox.Location = new System.Drawing.Point(82, 144);
             this.minusPicturebox.Name = "minusPicturebox";
-            this.minusPicturebox.Size = new System.Drawing.Size(60, 60);
+            this.minusPicturebox.Size = new System.Drawing.Size(67, 58);
             this.minusPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.minusPicturebox.TabIndex = 9;
             this.minusPicturebox.TabStop = false;
             // 
             // modifyPicturebox
             // 
-            this.modifyPicturebox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modifyPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modifyPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("modifyPicturebox.Image")));
-            this.modifyPicturebox.Location = new System.Drawing.Point(74, 268);
+            this.modifyPicturebox.Location = new System.Drawing.Point(82, 255);
             this.modifyPicturebox.Name = "modifyPicturebox";
-            this.modifyPicturebox.Size = new System.Drawing.Size(67, 60);
+            this.modifyPicturebox.Size = new System.Drawing.Size(67, 58);
             this.modifyPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.modifyPicturebox.TabIndex = 10;
             this.modifyPicturebox.TabStop = false;
             // 
             // modifyPersonButton
             // 
-            this.modifyPersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modifyPersonButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modifyPersonButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyPersonButton.Location = new System.Drawing.Point(162, 268);
+            this.modifyPersonButton.Location = new System.Drawing.Point(170, 255);
             this.modifyPersonButton.Name = "modifyPersonButton";
-            this.modifyPersonButton.Size = new System.Drawing.Size(169, 27);
+            this.modifyPersonButton.Size = new System.Drawing.Size(169, 26);
             this.modifyPersonButton.TabIndex = 11;
             this.modifyPersonButton.Text = "Modificare persoana";
             this.modifyPersonButton.UseVisualStyleBackColor = true;
@@ -218,13 +198,11 @@ namespace Lab4_Ex4
             // 
             // modifyApartmentButton
             // 
-            this.modifyApartmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modifyApartmentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modifyApartmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyApartmentButton.Location = new System.Drawing.Point(162, 297);
+            this.modifyApartmentButton.Location = new System.Drawing.Point(170, 284);
             this.modifyApartmentButton.Name = "modifyApartmentButton";
-            this.modifyApartmentButton.Size = new System.Drawing.Size(169, 27);
+            this.modifyApartmentButton.Size = new System.Drawing.Size(169, 26);
             this.modifyApartmentButton.TabIndex = 12;
             this.modifyApartmentButton.Text = "Modificare apartament";
             this.modifyApartmentButton.UseVisualStyleBackColor = true;
@@ -232,37 +210,58 @@ namespace Lab4_Ex4
             // 
             // showPicturebox
             // 
-            this.showPicturebox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.showPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("showPicturebox.Image")));
-            this.showPicturebox.Location = new System.Drawing.Point(81, 363);
+            this.showPicturebox.Location = new System.Drawing.Point(82, 350);
             this.showPicturebox.Name = "showPicturebox";
-            this.showPicturebox.Size = new System.Drawing.Size(60, 78);
+            this.showPicturebox.Size = new System.Drawing.Size(67, 76);
             this.showPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.showPicturebox.TabIndex = 13;
             this.showPicturebox.TabStop = false;
             // 
             // showEventsButton
             // 
-            this.showEventsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.showEventsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showEventsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showEventsButton.Location = new System.Drawing.Point(162, 513);
+            this.showEventsButton.Location = new System.Drawing.Point(170, 499);
             this.showEventsButton.Name = "showEventsButton";
-            this.showEventsButton.Size = new System.Drawing.Size(169, 27);
+            this.showEventsButton.Size = new System.Drawing.Size(169, 26);
             this.showEventsButton.TabIndex = 14;
             this.showEventsButton.Text = "Afisare evenimente";
             this.showEventsButton.UseVisualStyleBackColor = true;
             this.showEventsButton.Click += new System.EventHandler(this.showEventsButton_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = global::Lab4_Ex4.Properties.Resources.DB_Fixed;
+            this.pictureBox2.Location = new System.Drawing.Point(89, 565);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 59);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // setDBbutton
+            // 
+            this.setDBbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.setDBbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setDBbutton.Location = new System.Drawing.Point(170, 581);
+            this.setDBbutton.Name = "setDBbutton";
+            this.setDBbutton.Size = new System.Drawing.Size(169, 26);
+            this.setDBbutton.TabIndex = 17;
+            this.setDBbutton.Text = "Setare BD";
+            this.setDBbutton.UseVisualStyleBackColor = true;
+            this.setDBbutton.Click += new System.EventHandler(this.setDBbutton_Click);
             // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(436, 613);
+            this.ClientSize = new System.Drawing.Size(436, 668);
+            this.Controls.Add(this.setDBbutton);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.showEventsButton);
             this.Controls.Add(this.showPicturebox);
@@ -286,6 +285,7 @@ namespace Lab4_Ex4
             ((System.ComponentModel.ISupportInitialize)(this.minusPicturebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modifyPicturebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.showPicturebox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,6 +307,9 @@ namespace Lab4_Ex4
         private System.Windows.Forms.Button modifyApartmentButton;
         private System.Windows.Forms.PictureBox showPicturebox;
         private System.Windows.Forms.Button showEventsButton;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button setDBbutton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
 
