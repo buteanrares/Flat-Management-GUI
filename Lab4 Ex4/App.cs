@@ -14,8 +14,7 @@ namespace Lab4_Ex4
         [STAThread]
         static void Main()
         {
-            Repository repository = new Repository("C:\\Users\\butea\\source\\repos\\Lab4 Ex4\\Lab4 Ex4\\Database");
-            repository.loadFromFile();
+            Repository repository = new Repository();
          
             Service service = new Service(repository);
 

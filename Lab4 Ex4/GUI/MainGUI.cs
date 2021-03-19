@@ -1,5 +1,6 @@
 ﻿using Lab4_Ex4.GUI;
 using System;
+using System.IO;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -144,6 +145,13 @@ namespace Lab4_Ex4
 
             var showEventsForm = new ShowEventsForm(service);
             showEventsForm.Show();
+        }
+
+        private void setDBbutton_Click(object sender, EventArgs e)
+        {
+            String exitMessage = this.service.selectDB(this.folderBrowserDialog);
+            System.Windows.Forms.MessageBox.Show(exitMessage);
+
         }
     }
 }
