@@ -332,17 +332,17 @@ namespace Lab4_Ex4
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        return "EROARE\nIncarcarea datelor din fisierele BD a esuat." +
+                        return "EROARE\n\nIncarcarea datelor din fisierele BD a esuat." +
                         "\nContinutul nu modeleaza atributele unor apartamente sau locatari dupa format CSV.";
                     }
                     return "Baza de date a fost setata cu succes";
                 }
                 else
                 {
-                    return "EROARE\nBaza de date trebuie sa contina doar fisierele <apartments.csv> si <people.csv>.";
+                    return "EROARE\n\nBaza de date trebuie sa contina doar fisierele <apartments.csv> si <people.csv>.";
                 }
             }
-            return "EROARE\nPath invalid.";
+            return "EROARE\n\nPath invalid.";
         }
     }
 }

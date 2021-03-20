@@ -157,7 +157,7 @@ namespace Lab4_Ex4
             /// <param name="e"></param>
 
             String exitMessage = this.service.selectDB(this.folderBrowserDialog);
-            System.Windows.Forms.MessageBox.Show(exitMessage);
+            System.Windows.Forms.MessageBox.Show(exitMessage,"Operation result",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
 
         }
     }
