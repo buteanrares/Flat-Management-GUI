@@ -63,9 +63,19 @@ namespace Lab4_Ex4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DB_Fixed {
+        internal static System.Drawing.Bitmap addOutlined {
             get {
-                object obj = ResourceManager.GetObject("DB-Fixed", resourceCulture);
+                object obj = ResourceManager.GetObject("addOutlined", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap asteriskFixed {
+            get {
+                object obj = ResourceManager.GetObject("asteriskFixed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +85,37 @@ namespace Lab4_Ex4.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap DB_FixedColors {
             get {
-                object obj = ResourceManager.GetObject("DB-FixedColors", resourceCulture);
+                object obj = ResourceManager.GetObject("DB_FixedColors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minusOutlined {
+            get {
+                object obj = ResourceManager.GetObject("minusOutlined", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchFixed {
+            get {
+                object obj = ResourceManager.GetObject("searchFixed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table {
+            get {
+                object obj = ResourceManager.GetObject("table", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
