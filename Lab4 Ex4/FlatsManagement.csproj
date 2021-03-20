@@ -183,10 +183,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DB-Fixed.jpg" />
+    <None Include="Resources\searchFixed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addOutlined.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asteriskFixed.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DB-FixedColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minusOutlined.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

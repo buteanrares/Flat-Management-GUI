@@ -29,7 +29,6 @@ namespace Lab4_Ex4
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGUI));
             this.butonAddPerson = new System.Windows.Forms.Button();
             this.buttonAddApartment = new System.Windows.Forms.Button();
             this.buttonMonthlyPayments = new System.Windows.Forms.Button();
@@ -60,7 +59,7 @@ namespace Lab4_Ex4
             // 
             this.butonAddPerson.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.butonAddPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butonAddPerson.Location = new System.Drawing.Point(170, 38);
+            this.butonAddPerson.Location = new System.Drawing.Point(177, 38);
             this.butonAddPerson.Name = "butonAddPerson";
             this.butonAddPerson.Size = new System.Drawing.Size(169, 26);
             this.butonAddPerson.TabIndex = 0;
@@ -72,7 +71,7 @@ namespace Lab4_Ex4
             // 
             this.buttonAddApartment.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonAddApartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddApartment.Location = new System.Drawing.Point(170, 71);
+            this.buttonAddApartment.Location = new System.Drawing.Point(177, 71);
             this.buttonAddApartment.Name = "buttonAddApartment";
             this.buttonAddApartment.Size = new System.Drawing.Size(169, 26);
             this.buttonAddApartment.TabIndex = 1;
@@ -84,7 +83,7 @@ namespace Lab4_Ex4
             // 
             this.buttonMonthlyPayments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonMonthlyPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMonthlyPayments.Location = new System.Drawing.Point(170, 467);
+            this.buttonMonthlyPayments.Location = new System.Drawing.Point(177, 467);
             this.buttonMonthlyPayments.Name = "buttonMonthlyPayments";
             this.buttonMonthlyPayments.Size = new System.Drawing.Size(169, 26);
             this.buttonMonthlyPayments.TabIndex = 2;
@@ -96,7 +95,7 @@ namespace Lab4_Ex4
             // 
             this.showPeopleButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showPeopleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPeopleButton.Location = new System.Drawing.Point(170, 357);
+            this.showPeopleButton.Location = new System.Drawing.Point(177, 357);
             this.showPeopleButton.Name = "showPeopleButton";
             this.showPeopleButton.Size = new System.Drawing.Size(169, 26);
             this.showPeopleButton.TabIndex = 3;
@@ -108,7 +107,7 @@ namespace Lab4_Ex4
             // 
             this.showApartmentsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showApartmentsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showApartmentsButton.Location = new System.Drawing.Point(170, 390);
+            this.showApartmentsButton.Location = new System.Drawing.Point(177, 390);
             this.showApartmentsButton.Name = "showApartmentsButton";
             this.showApartmentsButton.Size = new System.Drawing.Size(169, 26);
             this.showApartmentsButton.TabIndex = 4;
@@ -119,7 +118,7 @@ namespace Lab4_Ex4
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::Lab4_Ex4.Properties.Resources.asteriskFixed;
             this.pictureBox1.Location = new System.Drawing.Point(82, 467);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(67, 58);
@@ -130,7 +129,7 @@ namespace Lab4_Ex4
             // plusPicturebox
             // 
             this.plusPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.plusPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("plusPicturebox.Image")));
+            this.plusPicturebox.Image = global::Lab4_Ex4.Properties.Resources.addOutlined;
             this.plusPicturebox.Location = new System.Drawing.Point(82, 38);
             this.plusPicturebox.Name = "plusPicturebox";
             this.plusPicturebox.Size = new System.Drawing.Size(67, 58);
@@ -142,7 +141,7 @@ namespace Lab4_Ex4
             // 
             this.deletePersonButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deletePersonButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deletePersonButton.Location = new System.Drawing.Point(170, 144);
+            this.deletePersonButton.Location = new System.Drawing.Point(177, 144);
             this.deletePersonButton.Name = "deletePersonButton";
             this.deletePersonButton.Size = new System.Drawing.Size(169, 26);
             this.deletePersonButton.TabIndex = 7;
@@ -154,7 +153,7 @@ namespace Lab4_Ex4
             // 
             this.deleteApartmentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deleteApartmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteApartmentButton.Location = new System.Drawing.Point(170, 177);
+            this.deleteApartmentButton.Location = new System.Drawing.Point(177, 177);
             this.deleteApartmentButton.Name = "deleteApartmentButton";
             this.deleteApartmentButton.Size = new System.Drawing.Size(169, 26);
             this.deleteApartmentButton.TabIndex = 8;
@@ -165,7 +164,7 @@ namespace Lab4_Ex4
             // minusPicturebox
             // 
             this.minusPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.minusPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("minusPicturebox.Image")));
+            this.minusPicturebox.Image = global::Lab4_Ex4.Properties.Resources.minusOutlined;
             this.minusPicturebox.Location = new System.Drawing.Point(82, 144);
             this.minusPicturebox.Name = "minusPicturebox";
             this.minusPicturebox.Size = new System.Drawing.Size(67, 58);
@@ -176,7 +175,7 @@ namespace Lab4_Ex4
             // modifyPicturebox
             // 
             this.modifyPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modifyPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("modifyPicturebox.Image")));
+            this.modifyPicturebox.Image = global::Lab4_Ex4.Properties.Resources.searchFixed;
             this.modifyPicturebox.Location = new System.Drawing.Point(82, 255);
             this.modifyPicturebox.Name = "modifyPicturebox";
             this.modifyPicturebox.Size = new System.Drawing.Size(67, 58);
@@ -188,7 +187,7 @@ namespace Lab4_Ex4
             // 
             this.modifyPersonButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modifyPersonButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyPersonButton.Location = new System.Drawing.Point(170, 255);
+            this.modifyPersonButton.Location = new System.Drawing.Point(177, 255);
             this.modifyPersonButton.Name = "modifyPersonButton";
             this.modifyPersonButton.Size = new System.Drawing.Size(169, 26);
             this.modifyPersonButton.TabIndex = 11;
@@ -200,7 +199,7 @@ namespace Lab4_Ex4
             // 
             this.modifyApartmentButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modifyApartmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyApartmentButton.Location = new System.Drawing.Point(170, 284);
+            this.modifyApartmentButton.Location = new System.Drawing.Point(177, 284);
             this.modifyApartmentButton.Name = "modifyApartmentButton";
             this.modifyApartmentButton.Size = new System.Drawing.Size(169, 26);
             this.modifyApartmentButton.TabIndex = 12;
@@ -211,10 +210,10 @@ namespace Lab4_Ex4
             // showPicturebox
             // 
             this.showPicturebox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.showPicturebox.Image = ((System.Drawing.Image)(resources.GetObject("showPicturebox.Image")));
-            this.showPicturebox.Location = new System.Drawing.Point(82, 350);
+            this.showPicturebox.Image = global::Lab4_Ex4.Properties.Resources.table;
+            this.showPicturebox.Location = new System.Drawing.Point(82, 357);
             this.showPicturebox.Name = "showPicturebox";
-            this.showPicturebox.Size = new System.Drawing.Size(67, 76);
+            this.showPicturebox.Size = new System.Drawing.Size(67, 59);
             this.showPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.showPicturebox.TabIndex = 13;
             this.showPicturebox.TabStop = false;
@@ -223,7 +222,7 @@ namespace Lab4_Ex4
             // 
             this.showEventsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showEventsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showEventsButton.Location = new System.Drawing.Point(170, 499);
+            this.showEventsButton.Location = new System.Drawing.Point(177, 499);
             this.showEventsButton.Name = "showEventsButton";
             this.showEventsButton.Size = new System.Drawing.Size(169, 26);
             this.showEventsButton.TabIndex = 14;
@@ -235,9 +234,9 @@ namespace Lab4_Ex4
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::Lab4_Ex4.Properties.Resources.DB_FixedColors;
-            this.pictureBox2.Location = new System.Drawing.Point(89, 565);
+            this.pictureBox2.Location = new System.Drawing.Point(82, 565);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(60, 59);
+            this.pictureBox2.Size = new System.Drawing.Size(67, 59);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
@@ -246,11 +245,11 @@ namespace Lab4_Ex4
             // 
             this.setDBbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.setDBbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setDBbutton.Location = new System.Drawing.Point(170, 581);
+            this.setDBbutton.Location = new System.Drawing.Point(177, 581);
             this.setDBbutton.Name = "setDBbutton";
             this.setDBbutton.Size = new System.Drawing.Size(169, 26);
             this.setDBbutton.TabIndex = 17;
-            this.setDBbutton.Text = "Setare BD";
+            this.setDBbutton.Text = "Setare baza de date";
             this.setDBbutton.UseVisualStyleBackColor = true;
             this.setDBbutton.Click += new System.EventHandler(this.setDBbutton_Click);
             // 
