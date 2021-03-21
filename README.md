@@ -9,6 +9,7 @@
 
 ### Functionalities:
 - CRUD for domain level objects
+- Local data reading and saving from/into .csv files
 - Listing
 - Searching
 - Sorting by any property
